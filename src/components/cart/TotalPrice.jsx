@@ -58,12 +58,12 @@ const TotalPrice = ({ cartLength }) => {
         {/* PaymentForm ga prop sifatida price ni uzatamiz */}
         <PaymentForm saleAmount={price} />
 
-        <button
+        {/* <button
           onClick={openModal}
           className="btn btn-primary bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300"
         >
           Order confirmation
-        </button>
+        </button> */}
       </div>
 
       {isModalOpen && (
