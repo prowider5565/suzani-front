@@ -209,7 +209,7 @@ const Detail = () => {
                   type="submit"
                   className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
                 >
-                  Buy
+                  Send
                 </button>
               </form>
             </div>
