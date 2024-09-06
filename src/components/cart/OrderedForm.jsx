@@ -212,7 +212,7 @@ export const OrderedForm = () => {
               variant="gradient"
               color="green"
             >
-              <span>Shipping</span>
+              <span>Purchase</span>
             </button>
           </div>
         ) : (
@@ -256,7 +256,7 @@ export const OrderedForm = () => {
                       variant="gradient"
                       color="green"
                     >
-                      <span>Shipping</span>
+                      <span>Purchase</span>
                     </button>
                   </div>
                 </Form>

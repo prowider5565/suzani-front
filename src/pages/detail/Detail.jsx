@@ -20,6 +20,7 @@ const Detail = () => {
   const { refetch, data, isFetched } = getASingleProduct(cardId);
   const { data: reviews, isLoading: isReviewsLoading } =
     getProductReviews(cardId);
+    console.log(reviews, "comments");
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
   const [fullName, setFullName] = useState("");
@@ -61,6 +62,7 @@ const Detail = () => {
         onSuccess: () => {
           resetForm();
           setIsModalOpen(false);
+          window.location.reload();
         },
         onError: (error) => {
           console.log(error);
@@ -153,7 +155,7 @@ const Detail = () => {
                   {data?.price === null
                     ? "Kelishuv asosida"
                     : (+data?.price).brm()}
-                  <span className="pl-2">{data?.currency}</span>
+                  <span className="pl-2">{data?.currency || "USD"}</span>
                 </span>
               </p>
               <p className="text-black text-sm block">
@@ -232,7 +234,7 @@ const Detail = () => {
                       {review.full_name}
                     </div>
                     <div className="ml-2 text-sm text-gray-500">
-                      {new Date(review.created_at).toLocaleDateString()}
+                      {new Date(review.date_created).toLocaleDateString()}
                     </div>
                   </div>
                   <StarRating rating={review.rating} readonly />
