@@ -48,7 +48,7 @@ const ProductCard = ({ card, quantityHandler }) => {
             Price:
             <span className="text-blue-500 text-sm sm:text-lg font-semibold ml-3">
               {card?.price === null ? "Kelishuv asosida" : (+card?.price).brm()}
-              <span className="pl-2">{card?.currency}</span>
+              <span className="pl-2">{card?.currency || 'USD'}</span>
             </span>
           </p>
           <p className="text-black text-xs sm:text-sm block">
