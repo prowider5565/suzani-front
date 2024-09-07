@@ -3,6 +3,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import { usrImg } from "../../api/axios";
 
 const CartCard = ({ quantityHandler, toggleHandler, card }) => {
+  console.log(card, "Bu crda crdr")
   return (
     <div className="border-b relative overflow-hidden py-2 flex flex-col">
       <div className="flex flex-col sm:flex-row items-start gap-5  ">
