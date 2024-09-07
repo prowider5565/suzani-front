@@ -18,6 +18,7 @@ const Detail = () => {
   const { cardId } = useParams();
   const imgRef = useRef();
   const { refetch, data, isFetched } = getASingleProduct(cardId);
+  console.log(data, "bu single data")
   const { data: reviews, isLoading: isReviewsLoading } =
     getProductReviews(cardId);
     console.log(reviews, "comments");
@@ -118,11 +119,12 @@ const Detail = () => {
               <img
                 ref={imgRef}
                 className="w-full mx-auto h-full object-cover object-center"
-                src={
-                  data?.images[0]?.image
-                    ? usrImg + data.images[0].image
-                    : "https://www.shutterstock.com/image-illustration/no-picture-available-placeholder-thumbnail-260nw-2179364083.jpg"
-                }
+                // src={
+                //   data?.images[0]?.image
+                //     ? usrImg + data.images[0].image
+                //     : "https://www.shutterstock.com/image-illustration/no-picture-available-placeholder-thumbnail-260nw-2179364083.jpg"
+                // }
+                src={usrImg + data?.cover_image}
                 alt=""
               />
               <Checked cardId={data?.uuid} />

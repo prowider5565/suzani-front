@@ -32,7 +32,8 @@ const Navbar = () => {
         <div className="main-container w-full flex gap-5  flex-wrap items-center justify-between">
           <Link to={"/"} className="text-2xl font-semibold text-blue-500">
             <img
-              src="../../../public/photo_2024-08-19_21-01-54.png"
+              // src="../../../public/photo_2024-08-19_21-01-54.png"
+              src="https://api.suzani-abdulhakim.uz/media/logo.png"
               alt=""
               className="w-52"
             />
