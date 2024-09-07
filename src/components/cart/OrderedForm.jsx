@@ -133,6 +133,7 @@ import { OtpVerify, Register } from '../../hooks/productsHook';
 import { getFromLS } from '../../utils/localStorage';
 import { useNavigate } from 'react-router-dom';
 import OtpInput from '../../utils/form-utils/OtpInput';
+import { toast } from 'react-toastify';
 
 export const OrderedForm = () => {
     const navigate = useNavigate()
@@ -162,15 +163,33 @@ export const OrderedForm = () => {
     // onsubmit function
     const productOfCart = getFromLS("cart");
     // console.log(productOfCart);
-    const onSubmit = (values, onSubmitProps) => {
-        registerM(values);
+    // const onSubmit = (values, onSubmitProps) => {
+    //     registerM(values);
 
-        setTimeout(() => {
+    //     setTimeout(() => {
+    //         setInitialValues(initialValuesObj);
+    //         onSubmitProps.setSubmitting(false);
+    //         onSubmitProps.resetForm();
+    //     }, 3000);
+    // };
+    const onSubmit = (values, onSubmitProps) => {
+      registerM(values, {
+        onError: (error) => {
+          const errorMessage =
+            error.response?.data?.email?.[0] || error.message;
+          toast.error(errorMessage);
+        },
+        onSuccess: () => {
+          toast.success("Ro'yxatdan muvaffaqiyatli o'tildi!");
+          setTimeout(() => {
             setInitialValues(initialValuesObj);
             onSubmitProps.setSubmitting(false);
             onSubmitProps.resetForm();
-        }, 3000);
+          }, 3000);
+        },
+      });
     };
+
 
     const [otp, setOtp] = useState('');
     const handleChange = (enteredOtp) => {
@@ -256,7 +275,7 @@ export const OrderedForm = () => {
                       variant="gradient"
                       color="green"
                     >
-                      <span>Purchase</span>
+                      <span>Send</span>
                     </button>
                   </div>
                 </Form>

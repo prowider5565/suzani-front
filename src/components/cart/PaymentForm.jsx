@@ -618,14 +618,14 @@ const PaymentForm = ({ saleAmount }) => {
           >
             <h2 className="text-lg font-semibold mb-4">Sign up</h2>
             <OrderedForm />
-            <div className="flex justify-end mt-4">
+            {/* <div className="flex justify-end mt-4">
               <button
                 onClick={closeModal}
                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition duration-300"
               >
                 Send
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
