@@ -28,7 +28,7 @@ const CartCard = ({ quantityHandler, toggleHandler, card }) => {
               <p className="text-red-500 text-md font-semibold ">
                 {card?.price === null
                   ? "Kelishuv asosida"
-                  : (+card?.price).brm() + " so'm"}
+                  : (+card?.price).brm() + " USD"}
                 <span className="text-black"></span>
               </p>
             </div>
@@ -85,7 +85,7 @@ const CartCard = ({ quantityHandler, toggleHandler, card }) => {
               <p className="text-blue-500 text-md font-semibold ">
                 {card?.price === null
                   ? "Kelishuv asosida"
-                  : (card?.price * card.count).brm() + " so'm"}
+                  : (card?.price * card.count).brm() + " USD"}
                 <span className="text-black"></span>
               </p>
             </div>
