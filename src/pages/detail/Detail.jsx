@@ -201,7 +201,7 @@ const Detail = () => {
                 <textarea
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
-                  placeholder="Izohingizni yozing"
+                  placeholder="Write your comment"
                   className="w-full mt-3 p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
                 />
                 <button
