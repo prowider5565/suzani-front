@@ -41,7 +41,7 @@ const TotalPrice = ({ cartLength }) => {
       <div className="flex flex-col gap-2">
         <div className="flex text-sm justify-between">
           <div>Products ({cartLength - kelishuv}):</div>
-          <div className="text-blue-500 text-xl">{price.brm()} soum</div>
+          <div className="text-blue-500 text-xl">{price.brm()} USD</div>
         </div>
         <div className="flex text-sm justify-between">
           <div>Agreed products :</div>
