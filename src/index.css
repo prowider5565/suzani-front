@@ -1,6 +1,5 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"); */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;800;900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -11,23 +10,23 @@
     margin: 0;
     box-sizing: border-box;
     /* font-family: "Poppins"; */
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     scroll-behavior: smooth;
 }
 
-iframe {
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 300px;
+.mySwiper iframe,
+.mySwiper img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
 }
 
 .bx-shadow {
-    box-shadow: 5px 5px 8px #bebebe,
-        -5px -5px 8px #ffffff;
+    box-shadow: 5px 5px 8px #bebebe, -5px -5px 8px #ffffff;
 }
 
 .active {
-    color: #FCAF3C;
+    color: #fcaf3c;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -39,7 +38,6 @@ input[type="number"]::-webkit-inner-spin-button {
 ::-webkit-scrollbar {
     width: 7px;
     height: 7px;
-
 }
 
 .rpv-core__display--block-medium {
@@ -70,14 +68,15 @@ input[type="number"]::-webkit-inner-spin-button {
 
 @layer base {
     .main-container {
-        @apply px-2 md:px-5 lg:px-10 xl:px-16
+        @apply px-2 md:px-5 lg:px-10 xl:px-16;
     }
 
     /* label {
         @apply flex flex-col
     } */
-    input, select {
-        @apply bg-transparent p-2 w-full border-2  border-blue-200 bg-gray-50 rounded-xl  focus:outline-none placeholder:text-[#f2f4f7]
+    input,
+    select {
+        @apply bg-transparent p-2 w-full border-2  border-blue-200 bg-gray-50 rounded-xl  focus:outline-none placeholder:text-[#f2f4f7];
     }
 }
 
@@ -87,16 +86,26 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .bg {
-    background-image: linear-gradient(to left, #2196f3 0%, #04eeff 51%, #2196f3 100%);
+    background-image: linear-gradient(
+        to left,
+        #2196f3 0%,
+        #04eeff 51%,
+        #2196f3 100%
+    );
     background-size: 200% auto;
-    transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     color: #fff;
 }
 
 .bg1 {
-    background-image: linear-gradient(to left, #02508f 0%, #68e0e9 51%, #004d8b 100%);
+    background-image: linear-gradient(
+        to left,
+        #02508f 0%,
+        #68e0e9 51%,
+        #004d8b 100%
+    );
     background-size: 200% auto;
-    transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     color: #fff;
 }
 
@@ -108,13 +117,12 @@ input[type="number"]::-webkit-inner-spin-button {
     background: linear-gradient(to left, #2196f3 0%, #00e8f9 51%, #2196f3 100%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-
 }
 
 .bg:hover,
 .bg1:hover {
     background-position: 100% 0;
-    transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .swiper-button-prev,
@@ -132,12 +140,4 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 18px;
     color: #fff;
     font-weight: 500;
-}
-
-
-@media screen and (min-width:1480px) {
-    .main-container {
-        padding-left: 0;
-        padding-right: 0;
-    }
 }
