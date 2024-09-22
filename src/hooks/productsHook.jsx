@@ -185,6 +185,21 @@ export const Register = ({ setisSuccessOtp }) => {
         }
     );
 };
+export const Login = () => {
+    return useMutation(
+        (data) => instance.post("/accounts/login/", data),
+        {
+            onSuccess: (data) => {
+                toast.success("Success");
+                console.log(data)
+            },
+            onError: (error) => {
+                console.log(error);
+                toast.error("Qandaydir xatolik bor");
+            },
+        }
+    );
+};
 export const OtpVerify = () => {
     return useMutation((data) => instance.post("/accounts/register/", data), {
         onSuccess: (data) => {
@@ -233,14 +248,14 @@ export const getProductReviews = (product_id) => {
     );
 };
 
-export const getUserData = (token) => {
+export const getUserData = () => {
     return useQuery(
-        ["getUserData", token],
+        ["getUserData"],
         () =>
             instance.get(`/accounts/me`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
+                // headers: {
+                //     Authorization: `Bearer ${token}`,
+                // },
             }),
         {
             refetchOnWindowFocus: false,

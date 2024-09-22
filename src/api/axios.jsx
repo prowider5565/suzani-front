@@ -5,7 +5,7 @@ export const usrImg = "http://89.223.126.64:8000";
 export const instance = axios.create({
   // baseURL: "https://dummyjson.com/",
   // baseURL: "https://medtexnam.uz/shop/api/",
-  baseURL: "http://89.223.126.64:8000/",
+  baseURL: "https://api.suzani-abdulhakim.uz/",
   // headers: {
   //     "Content-Type": "application/json",
   // },

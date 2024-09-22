@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { calculateTotal } from "../../context/cart";
 import ProductCard from "../products/ProductCard";
 import CartOrder from "./CartOrder";
-import { OrderedForm } from "./OrderedForm";
+import Portal from "../portal/Index";
+import { OrderedForm } from "../login/OrderedForm";
+import { SignIn } from "../login/SignIn";
 
 const Cart = () => {
     const cart = useSelector((state) => state.cart.cartItems);
@@ -50,7 +52,11 @@ const Cart = () => {
                                 Buyurtma formasi
                             </p>
 
-                            <OrderedForm />
+                            <div>
+                                <Portal ModalContent={OrderedForm} classNameBtn={"bg px-3 py-1 rounded"} text={"Sign up"}/>
+                                <Portal ModalContent={SignIn} classNameBtn={"bg px-3 py-1 rounded"} text={"Sign in"}/>
+                                
+                            </div>
                         </div>
                     </div>
                     {/* <div className="text-right text-xl font-semibold">

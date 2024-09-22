@@ -39,39 +39,39 @@ const CartOrder = ({ item }) => {
                 </div>
             </div>
 
-            <div className="flex items-center gap-2 border border-gray-400 px-2 rounded-md">
+            <div className="p-2 flex flex-col gap-2">
+                <div className="flex items-center gap-2 border border-gray-400 px-2 rounded-md">
+                    <button
+                        onClick={handleDecrease}
+                        className={`text-xl px-1 py-1.5 rounded-sm transition ${item.quantity === 1
+                                ? "opacity-50 cursor-not-allowed"
+                                : ""
+                            }`}
+                        disabled={item.quantity === 1}
+                    >
+                        <FiMinus />
+                    </button>
+                    <span className="text-lg border-l border-r border-gray-500 py-1.5 px-4">
+                        {item.quantity}
+                    </span>
+                    <button
+                        onClick={handleIncrease}
+                        className={`text-xl px-1 py-1.5 rounded-sm transition ${item.quantity === 10
+                                ? "opacity-50 cursor-not-allowed"
+                                : ""
+                            }`}
+                    >
+                        <FiPlus />
+                    </button>
+                </div>
                 <button
-                    onClick={handleDecrease}
-                    className={`text-xl px-1 py-1.5 rounded-sm transition ${
-                        item.quantity === 1
-                            ? "opacity-50 cursor-not-allowed"
-                            : ""
-                    }`}
-                    disabled={item.quantity === 1}
+                    onClick={handleRemove}
+                    className="border flex items-center gap-2 px-2 py-2 rounded-md bg-red-400 text-white text-sm hover:bg-red-500 duration-150"
                 >
-                    <FiMinus />
-                </button>
-                <span className="text-lg border-l border-r border-gray-500 py-1.5 px-4">
-                    {item.quantity}
-                </span>
-                <button
-                    onClick={handleIncrease}
-                    className={`text-xl px-1 py-1.5 rounded-sm transition ${
-                        item.quantity === 10
-                            ? "opacity-50 cursor-not-allowed"
-                            : ""
-                    }`}
-                >
-                    <FiPlus />
+                    <FiTrash2 />
+                    <p>O'chirish</p>
                 </button>
             </div>
-            <button
-                onClick={handleRemove}
-                className="border flex items-center gap-2 px-2 py-2 rounded-md bg-red-400 text-white text-sm hover:bg-red-500 duration-150"
-            >
-                <FiTrash2 />
-                <p>O'chirish</p>
-            </button>
         </div>
     );
 };
