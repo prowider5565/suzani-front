@@ -11,7 +11,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { FaCommentDots } from "react-icons/fa";
 import { useStore } from "../../components/navbar/Navbar";
 import { toggleFn } from "../../utils/toggleFn";
-import { usrImg } from "../../api/axios";
+import { usrImg } from "../../api/axios"; // Assuming this is your base URL for images
 import StarRating from "../../components/starrating/StarRating";
 
 const Detail = () => {
@@ -111,20 +111,21 @@ const Detail = () => {
       {!isFetched && <Spinner />}
       {data !== undefined ? (
         <div className="main-container mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 p-4 sm:gap-8">
-
-
+          {/* Product Image and Thumbnails */}
           <div className="flex overflow-hidden flex-col gap-3 col-span-1 md:col-span-1 lg:col-span-2 rounded-md">
             <div className="relative cursor-pointer aspect-w-5 aspect-h-4 overflow-hidden">
+              {/* Display cover image */}
               <img
                 ref={imgRef}
                 className="w-full mx-auto h-full object-cover object-center"
-                src={usrImg + data?.images[0].image}
-                alt=""
+                src={`${usrImg}${data?.cover_image}`} // Displaying the cover image
+                alt="Cover"
               />
               <Checked cardId={data?.uuid} />
             </div>
             <div className="flex gap-1 overflow-x-auto">
-              {data?.images.map((img, index) => (
+              {/* Thumbnails for other images */}
+              {data?.images?.map((img, index) => (
                 <button
                   className="border-2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 p-2 rounded-md overflow-hidden focus:border-blue-500"
                   key={index}
@@ -132,14 +133,15 @@ const Detail = () => {
                   <img
                     className="cursor-pointer w-full h-full object-cover object-center"
                     onClick={imgHandler}
-                    src={usrImg + img.image}
-                    alt=""
+                    src={`${usrImg}${img}`} // Correctly concatenating image URLs
+                    alt={`Product Thumbnail ${index + 1}`}
                   />
                 </button>
               ))}
             </div>
           </div>
 
+          {/* Product Details */}
           <div className="flex flex-col gap-3 col-span-1 md:col-span-1 lg:col-span-3 rounded-md">
             <div className="text-black hover:text-blue-500 transition-all text-base sm:text-lg font-semibold cursor-pointer">
               {data?.name}
@@ -150,7 +152,7 @@ const Detail = () => {
                 <span className="text-blue-500 text-base sm:text-lg font-semibold ml-3">
                   {data?.price === null
                     ? "Kelishuv asosida"
-                    : (+data?.price).brm()}
+                    : (+data?.price).toFixed(2)} {/* Format price */}
                   <span className="pl-2">{data?.currency}</span>
                 </span>
               </p>
@@ -176,6 +178,7 @@ const Detail = () => {
             </button>
           </div>
 
+          {/* Modal for Reviews */}
           <div style={modalOverlayStyle} onClick={() => setIsModalOpen(false)}>
             <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
               <button
@@ -213,12 +216,13 @@ const Detail = () => {
             </div>
           </div>
 
+          {/* Product Reviews */}
           <div className="w-full col-span-1 md:col-span-2 lg:col-span-5">
             <h2 className="text-lg font-semibold mb-4">Product Reviews</h2>
             {isReviewsLoading ? (
               <Spinner />
             ) : reviews?.length === 0 ? (
-              <p>Hozircha izohlar mavjud emas.</p>
+              <p>There are no reviews yet.</p>
             ) : (
               reviews.map((review, index) => (
                 <div
@@ -241,7 +245,7 @@ const Detail = () => {
           </div>
         </div>
       ) : (
-        <p>Unexpected error occured when loading details</p>
+        <p>Unexpected error occurred when loading details</p>
       )}
     </div>
   );

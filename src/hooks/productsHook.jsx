@@ -8,47 +8,6 @@ import { instance } from "../api/axios";
 import { toast } from "react-toastify";
 import { addToLS, clearLS } from "../utils/localStorage";
 
-// export const getAllProducts = ({
-//   typeFilter = "default",
-//   isReversed = false,
-//   pagination = 1,
-// }) => {
-//   return useQuery(
-//     ["getAllProducts", typeFilter, isReversed, pagination],
-//     () => instance.get(`products/list/?page=${pagination}`),
-//     {
-//       refetchOnWindowFocus: false,
-//       select: (data) => {
-//         let results = data?.data?.results;
-
-//         if (typeFilter !== "default") {
-//           results = results?.sort((a, b) => {
-//             if (typeFilter === "price") {
-//               return a.price - b.price;
-//             } else if (typeFilter === "name") {
-//               const nameA = a.name.toLowerCase();
-//               const nameB = b.name.toLowerCase();
-//               if (nameA < nameB) return -1;
-//               if (nameA > nameB) return 1;
-//               return 0;
-//             }
-//           });
-
-//           if (isReversed) {
-//             results = results.reverse();
-//           }
-//         }
-
-//         return { ...data.data, results };
-//       },
-//       onError: (error) => {
-//         toast.error("Qandaydir xatolik bor");
-//         console.log(error);
-//       },
-//     }
-//   );
-// };
-
 export const getAllProducts = ({
     typeFilter,
     isReversed,
@@ -63,7 +22,7 @@ export const getAllProducts = ({
         () =>
             instance.get(
                 `${
-                    type === "search" && value
+                    type === "  search" && value
                         ? `products/list/?search=${value}&page=${pagination}`
                         : `products/list/?page=${pagination}`
                 }`
@@ -93,7 +52,7 @@ export const getAllProducts = ({
                 }
             },
             onError: (error) => {
-                toast.error("Qandaydir xatolik bor");
+                toast.error("Sorry, unexpected error occured!");
                 console.log(error);
             },
         }
@@ -106,10 +65,10 @@ export const getASingleProduct = (id) => {
         {
             refetchOnWindowFocus: false,
             enabled: true,
-            // onSuccess: (data) => console.log(data),
+            onSuccess: (data) => console.log(data),
             select: (data) => data?.data,
             onError: (error) => {
-                toast.error("Qandaydir xatolik bor");
+                toast.error("Sorry, unexpected error occured!")         ;
                 console.log(error);
             },
         }
@@ -180,7 +139,7 @@ export const Register = ({ setisSuccessOtp }) => {
             },
             onError: (error) => {
                 console.log(error);
-                toast.error("Qandaydir xatolik bor");
+                toast.error("Sorry, unexpected error occured!");
             },
         }
     );
@@ -195,7 +154,7 @@ export const Login = () => {
             },
             onError: (error) => {
                 console.log(error);
-                toast.error("Qandaydir xatolik bor");
+                toast.error("Sorry, unexpected error occured!");
             },
         }
     );
@@ -209,7 +168,7 @@ export const OtpVerify = () => {
         },
         onError: (error) => {
             console.log(error);
-            toast.error("Qandaydir xatolik bor");
+            toast.error("Sorry, unexpected error occured!");
         },
     });
 };
@@ -241,7 +200,7 @@ export const getProductReviews = (product_id) => {
                 console.log("Received data:", data.results);
             },
             onError: (error) => {
-                toast.error("Qandaydir xatolik bor");
+                toast.error("Sorry, unexpected error occured!");
                 console.log(error);
             },
         }
@@ -264,7 +223,7 @@ export const getUserData = () => {
             //     console.log("Received data:", data);
             // },
             onError: (error) => {
-                toast.error("Qandaydir xatolik bor");
+                toast.error("Sorry, unexpected error occured!");
                 console.log(error);
             },
         }
