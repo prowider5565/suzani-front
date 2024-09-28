@@ -1,5 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Helper function to calculate item price based on discount
+const calculateItemPrice = (item) => {
+    let result = item.discount_price
+    ? item.price * (1 - item.discount_price / 100)
+    : item.price;
+    console.log("Current price of the product: ", result);
+    return result;
+};
+
 const getLocalStorage = () => {
     const cart = localStorage.getItem("cart");
     return cart ? JSON.parse(cart) : [];
@@ -21,9 +30,7 @@ const cartSlice = createSlice({
                 (item) => item.uuid === newItem.uuid
             );
 
-            const itemPrice = newItem.discount_price
-                ? newItem.price * (1 - newItem.discount_price / 100)
-                : newItem.price;
+            const itemPrice = calculateItemPrice(newItem);
 
             if (!existingItem) {
                 state.cartItems.push({
@@ -40,6 +47,10 @@ const cartSlice = createSlice({
                 state.totalQuantity += 1;
                 state.totalPrice += Number(existingItem.price);
             }
+
+            // Recalculate totals after adding item
+            cartSlice.caseReducers.calculateTotal(state);
+
             localStorage.setItem("cart", JSON.stringify(state.cartItems));
         },
 
@@ -48,6 +59,7 @@ const cartSlice = createSlice({
             const existingItem = state.cartItems.find(
                 (item) => item.uuid === uuid
             );
+
             if (existingItem) {
                 if (existingItem.quantity === 1) {
                     state.cartItems = state.cartItems.filter(
@@ -60,6 +72,10 @@ const cartSlice = createSlice({
                     state.totalQuantity -= 1;
                     state.totalPrice -= Number(existingItem.price);
                 }
+
+                // Recalculate totals after removing an item
+                cartSlice.caseReducers.calculateTotal(state);
+
                 localStorage.setItem("cart", JSON.stringify(state.cartItems));
             }
         },
@@ -69,13 +85,19 @@ const cartSlice = createSlice({
             const existingItem = state.cartItems.find(
                 (item) => item.uuid === uuid
             );
+
             if (existingItem) {
                 state.totalQuantity -= existingItem.quantity;
                 state.totalPrice -=
                     Number(existingItem.price) * existingItem.quantity;
+
                 state.cartItems = state.cartItems.filter(
                     (item) => item.uuid !== uuid
                 );
+
+                // Recalculate totals after removing the whole item
+                cartSlice.caseReducers.calculateTotal(state);
+
                 localStorage.setItem("cart", JSON.stringify(state.cartItems));
             }
         },

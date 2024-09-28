@@ -17,10 +17,18 @@ const Cart = () => {
     address: "",
     country: "",
     region: "",
-    sale_amount: totalPrice,
+    sale_amount: totalPrice, // initially set to totalPrice
     phone_number: "",
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Update sale_amount in formData whenever totalPrice changes
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      sale_amount: totalPrice, // update sale_amount whenever totalPrice changes
+    }));
+  }, [totalPrice]);
 
   // Check for the access token on component mount
   useEffect(() => {
@@ -47,7 +55,7 @@ const Cart = () => {
 
     const payload = { ...formData, orders };
     try {
-      const response = await fetch( 
+      const response = await fetch(
         "https://api.suzani-abdulhakim.uz/payments/process/",
         {
           method: "POST",
@@ -63,9 +71,8 @@ const Cart = () => {
 
         // Redirect to the payment URL if it exists
         if (data.redirect_url) {
+          console.log(formData); // form data now contains the correct total price
           // window.location.href = data.redirect_url;
-          console.log(formData);
-          
         }
       } else {
         console.error("Error:", response.statusText);
@@ -92,7 +99,6 @@ const Cart = () => {
             </div>
             <div className="border w-[420px] h-[620px] sticky top-44 xl:top-28 rounded-lg p-4">
               {isLoggedIn ? (
-                // If user is logged in, show the payment form
                 <>
                   <div className="mb-4">
                     <p className="text-lg font-medium">Sizning buyurtmangiz</p>
@@ -151,7 +157,7 @@ const Cart = () => {
                     <input
                       type="hidden"
                       name="sale_amount"
-                      value={totalPrice}
+                      value={formData.sale_amount} // updated dynamically
                     />
                     <button
                       type="submit"
@@ -162,7 +168,6 @@ const Cart = () => {
                   </form>
                 </>
               ) : (
-                // If user is not logged in, show Sign In and Sign Up buttons
                 <>
                   <div className="mb-4">
                     <p className="text-lg font-medium">Sizning buyurtmangiz</p>
