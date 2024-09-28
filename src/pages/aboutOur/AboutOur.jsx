@@ -50,7 +50,7 @@ const data = [
 const AboutOur = () => {
     return (
       <div className="main-container min-h-[46vh] mb-10">
-        <h1 className="text-2xl mt-8">Biz haqimizda:</h1>
+        <h1 className="text-2xl mt-8">About us:</h1>
         <div className="flex flex-col my-8 gap-3 text-justify">
           <div>
             <span className="font-semibold">"SUZANE.UZ"</span> Masu'liyati

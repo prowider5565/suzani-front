@@ -7,7 +7,7 @@ const Contact = () => {
 
   return (
     <div className="main-container min-h-[50vh] py-10 ">
-      <h1 className="text-2xl mt-8">Biz bog'lanish:</h1>
+      <h1 className="text-2xl mt-8">Contact us:</h1>
       <div className=" flex flex-col xl:flex-row gap-8">
         <div className="border border-gray-500 rounded-md p-5 ">
           <h1>

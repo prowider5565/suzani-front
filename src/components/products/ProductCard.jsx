@@ -71,7 +71,7 @@ const ProductCard = ({ card, quantityHandler }) => {
                 </div>
                 <div>
                     <p className="text-gray-400 text-xs sm:text-sm block ">
-                        Narx:
+                        Price:
                         <span className="text-sm  font-semibold ml-3 line-through">
                             {card?.price === null
                                 ? "Kelishuv asosida"
@@ -80,11 +80,11 @@ const ProductCard = ({ card, quantityHandler }) => {
                         </span>
                     </p>
                     <p className="text-black text-xs sm:text-sm block">
-                        <span className="text-gray-400">Miqdori: </span>
+                        <span className="text-gray-400">Quantity in stock: </span>
                         {card?.stock_quantity?.brm()}
                     </p>
                     <p className="text-black text-xs sm:text-sm block">
-                        <span className="text-gray-400 pr-2 ">Chegirmada:</span>
+                        <span className="text-gray-400 pr-2 ">At discount:</span>
                         <span className="text-lg text-blue-500 ">
                             {calculateDiscountedPrice(
                                 card?.price,
@@ -119,7 +119,7 @@ const ProductCard = ({ card, quantityHandler }) => {
                             className={"w-4 sm:w-6 h-4 hidden sm:block sm:h-6"}
                         />
                         <span className="text-sm sm:text-base ">
-                            Sotib olish
+                            Purchase
                         </span>
                     </button>
                 )}

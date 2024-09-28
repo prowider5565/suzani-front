@@ -18,14 +18,14 @@ const Footer = () => {
             className="w-48"
           />
           <li className="py-1">
-            <Link to={"/biz-haqimizda"}>Biz haqimizda</Link>
+            <Link to={"/biz-haqimizda"}>About us</Link>
           </li>
           <li className="py-1">
-            <Link to={"/contact"}>Biz bilan bog'lanish</Link>
+            <Link to={"/contact"}>Contact Us</Link>
           </li>
         </ul>
         <ul className="sm:col-span-2 xl:col-span-1">
-          <h1 className="text-2xl font-semibold mb-1">Aloqa</h1>
+          <h1 className="text-2xl font-semibold mb-1">Contact</h1>
           <li className="py-1">
             <span>Addres:</span>
             <span>{data && data[0]?.address}</span>
@@ -48,7 +48,7 @@ const Footer = () => {
           </li>
         </ul>
         <ul className="sm:col-span-2 xl:col-span-1">
-          <h1 className="text-2xl font-semibold mb-1">Ijtimoiy tarmoqlar</h1>
+          <h1 className="text-2xl font-semibold mb-1">Our social media</h1>
           <div className="flex gap-3 mt-5">
             {data && data[0]?.telegram && (
               <a
@@ -117,14 +117,14 @@ export default Footer;
 //               className="w-48"
 //             />
 //             <li className="py-1">
-//               <Link to={"/biz-haqimizda"}>Biz haqimizda</Link>
+//               <Link to={"/biz-haqimizda"}>About us</Link>
 //             </li>
 //             <li className="py-1">
-//               <Link to={"/contact"}>Biz bilan bog'lanish</Link>
+//               <Link to={"/contact"}>Contact Us</Link>
 //             </li>
 //           </ul>
 //           <ul className="sm:col-span-2 xl:col-span-1">
-//             <h1 className="text-2xl font-semibold mb-1">Aloqa</h1>
+//             <h1 className="text-2xl font-semibold mb-1">Contact</h1>
 //             <li className="py-1">
 //               <span>Addres:</span>
 //               <span>{data?.address_text}</span>
@@ -145,7 +145,7 @@ export default Footer;
 //             </li>
 //           </ul>
 //           <ul className="sm:col-span-2 xl:col-span-1">
-//             <h1 className="text-2xl font-semibold mb-1">Ijtimoiy tarmoqlar</h1>
+//             <h1 className="text-2xl font-semibold mb-1">Our social media</h1>
 //             <div className="flex gap-3 mt-5">
 //               {data?.telegram && (
 //                 <a

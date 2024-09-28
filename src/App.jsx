@@ -37,7 +37,7 @@ const App = () => {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/savatcha" element={<Cart />} />
+                <Route path="/Cart" element={<Cart />} />
                 <Route path="/mahsulot-haqida/:cardId" element={<Detail />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/biz-haqimizda" element={<AboutOur />} />

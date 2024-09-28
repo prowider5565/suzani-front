@@ -5,7 +5,7 @@ const FilteredCategory = () => {
         <div className='lg:flex bg-white py-4 items-center justify-between main-container w-full'>
             <div className='flex items-center justify-between'>
                 <div>
-                    Saralash:
+                    Sort by:
                 </div>
                 <button onClick={() => { setShowBar(!showBar) }} className='lg:hidden'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

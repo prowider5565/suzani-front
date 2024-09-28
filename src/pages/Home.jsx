@@ -31,7 +31,7 @@ const Home = () => {
             <div className="flex flex-col">
                 <div className="flex  flex-col xl:flex-row  my-3 justify-between">
                     <div className="flex items-center h-[60px]  justify-between px-2 w-full xl:w-max">
-                        <div>Saralash:</div>
+                        <div>Sort by:</div>
                         <button
                             onClick={() => {
                                 setShowBar(!showBar);

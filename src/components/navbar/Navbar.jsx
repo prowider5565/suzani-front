@@ -53,7 +53,7 @@ const Navbar = () => {
                             onChange={(e) => setDataInp(e.target.value)}
                             type="text"
                             className="rounded-e-none border-e-0 w-full py-3 text-[13px] bg-transparent  placeholder:text-gray-500"
-                            placeholder="Mahsulotlarni izlash"
+                            placeholder="Search for products..."
                         />
                         <button
                             onClick={clickHandler}
@@ -65,14 +65,14 @@ const Navbar = () => {
                 </div>
                 <div className="flex gap-6  flex-wrap justify-evenly items-center text-blue-500 order-1 xl:order-2  sm:w-auto">
                     <Link
-                        to={"/savatcha"}
+                        to={"/Cart"}
                         className="flex cursor-pointer py-1 flex-col items-center relative text-[12px]"
                     >
                         <HiOutlineShoppingCart className="w-6 h-6" />
                         <span className="absolute right-0 top-0 bg-blue-500 text-white w-max px-1 min-w-4 h-4 flex items-center  justify-center rounded-full">
                             {totalProduct}
                         </span>
-                        <span className="text-black">Savatcha</span>
+                        <span className="text-black">Your cart</span>
                     </Link>
                 </div>
             </div>

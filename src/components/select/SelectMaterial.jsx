@@ -5,7 +5,7 @@ const SelectMaterial = () => {
     return (
         <div className="w-full lg:w-[250px]">
             <Select className='py-5 w-full'
-                label="Saralash"
+                label="Sort by"
                 animate={{
                     mount: { y: 0 },
                     unmount: { y: 25 },

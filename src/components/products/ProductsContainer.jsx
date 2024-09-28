@@ -30,13 +30,11 @@ const ProductsContainer = ({ data }) => {
                         <GoSearch className="w-20 h-20 text-blue-500" />
                     </div>
                     <h1 className="text-lg font-medium">
-                        Biz siz qidirayotgan narsani topa olmadik
-                    </h1>
+                        Sorry, product you are searching not found!                    </h1>
                     <p className="text-sm">
-                        Mahsulot nomida xatolik yoki bizda hali bunday mahsulot
-                        boʻlmasligi mumkin
+                    There may be an error in the product name or we may not have the product yet
                     </p>
-                </div>
+                    </div>
             )}
         </div>
     );

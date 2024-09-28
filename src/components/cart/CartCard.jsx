@@ -18,7 +18,7 @@ const CartCard = ({ quantityHandler, toggleHandler, card }) => {
                         {card?.name}
                     </h1>
                     <p className="text-black text-xs sm:text-sm block">
-                        <span className="text-gray-400">Miqdori:</span>{" "}
+                        <span className="text-gray-400">Quantity in stock:</span>{" "}
                         {card?.quantity}
                     </p>
                     <div className="mt-2 sm:flex gap-5 flex-1">
@@ -97,7 +97,7 @@ const CartCard = ({ quantityHandler, toggleHandler, card }) => {
                                 onClick={() => toggleHandler(card)}
                                 className="bg-transparent text-blue-500 border border-blue-500 flex items-center text-[12px] font-normal p-1  rounded"
                             >
-                                <span>o'chirish</span>
+                                <span>Remove</span>
                                 <IoTrashOutline className="w-4 h-4" />
                             </button>
                         </div>

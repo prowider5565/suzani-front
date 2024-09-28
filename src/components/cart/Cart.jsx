@@ -71,8 +71,7 @@ const Cart = () => {
 
         // Redirect to the payment URL if it exists
         if (data.redirect_url) {
-          console.log(formData); // form data now contains the correct total price
-          // window.location.href = data.redirect_url;
+          window.location.href = data.redirect_url;
         }
       } else {
         console.error("Error:", response.statusText);
@@ -84,10 +83,10 @@ const Cart = () => {
 
   return (
     <div className="xl:container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Savat</h1>
+      <h1 className="text-2xl font-bold mb-4">Cart</h1>
       {cart.length === 0 ? (
         <div className="w-full min-h-[460px] flex items-center justify-center font-semibold text-xl">
-          Savat bo'sh
+          Your cart is empty!
         </div>
       ) : (
         <div className="space-y-4">
@@ -101,13 +100,13 @@ const Cart = () => {
               {isLoggedIn ? (
                 <>
                   <div className="mb-4">
-                    <p className="text-lg font-medium">Sizning buyurtmangiz</p>
+                    <p className="text-lg font-medium">Your orders</p>
                     <div className="flex items-center justify-between">
-                      <p className="text-sm">Maxsulotlar: ({cart?.length})</p>
+                      <p className="text-sm">Products: ({cart?.length})</p>
                       <p className="text-blue-500">{totalPrice?.brm()}$</p>
                     </div>
                   </div>
-                  <p className="font-semibold text-lg mb-3">Buyurtma formasi</p>
+                  <p className="font-semibold text-lg mb-3">Order form</p>
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <input
                       type="text"
@@ -170,14 +169,14 @@ const Cart = () => {
               ) : (
                 <>
                   <div className="mb-4">
-                    <p className="text-lg font-medium">Sizning buyurtmangiz</p>
+                    <p className="text-lg font-medium">Your orders</p>
                     <div className="flex items-center justify-between">
-                      <p className="text-sm">Maxsulotlar: ({cart?.length})</p>
+                      <p className="text-sm">Products: ({cart?.length})</p>
                       <p className="text-blue-500">{totalPrice?.brm()}$</p>
                     </div>
                   </div>
                   <h1 className="text-center text-2xl">
-                    Rasmiylashtirish uchun ro'yxatdan o'ting
+                    For a valid purchase please authenticate to our system 
                   </h1>
 
                   <div className="mt-5 flex justify-center gap-5">

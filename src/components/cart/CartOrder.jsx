@@ -69,7 +69,7 @@ const CartOrder = ({ item }) => {
                     className="border flex items-center gap-2 px-2 py-2 rounded-md bg-red-400 text-white text-sm hover:bg-red-500 duration-150"
                 >
                     <FiTrash2 />
-                    <p>O'chirish</p>
+                    <p>Remove</p>
                 </button>
             </div>
         </div>
