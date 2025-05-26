@@ -1,55 +1,50 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
-import {
-  getASingleProduct,
-  postReview,
-  getProductReviews,
-} from "../../hooks/productsHook";
-import Spinner from "../../components/spinner/Spinner";
-import Checked from "../../components/products/Checked";
-import { HiOutlineShoppingCart } from "react-icons/hi2";
-import { FaCommentDots } from "react-icons/fa";
-import { useStore } from "../../components/navbar/Navbar";
-import { toggleFn } from "../../utils/toggleFn";
-import { usrImg } from "../../api/axios"; // Assuming this is your base URL for images
-import StarRating from "../../components/starrating/StarRating";
+import React, { useEffect, useRef, useState } from "react"
+import { useParams } from "react-router-dom"
+import { getASingleProduct, postReview, getProductReviews } from "../../hooks/productsHook"
+import Spinner from "../../components/spinner/Spinner"
+import Checked from "../../components/products/Checked"
+import { HiOutlineShoppingCart } from "react-icons/hi2"
+import { FaCommentDots } from "react-icons/fa"
+import { useStore } from "../../components/navbar/Navbar"
+import { toggleFn } from "../../utils/toggleFn"
+import { usrImg } from "../../api/axios" // Assuming this is your base URL for images
+import StarRating from "../../components/starrating/StarRating"
 
 const Detail = () => {
-  const { cardId } = useParams();
-  const imgRef = useRef();
-  const { refetch, data, isFetched } = getASingleProduct(cardId);
-  const { data: reviews, isLoading: isReviewsLoading } =
-    getProductReviews(cardId);
-  const [comment, setComment] = useState("");
-  const [rating, setRating] = useState(0);
-  const [fullName, setFullName] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { cardId } = useParams()
+  const imgRef = useRef()
+  const { refetch, data, isFetched } = getASingleProduct(cardId)
+  const { data: reviews, isLoading: isReviewsLoading } = getProductReviews(cardId)
+  const [comment, setComment] = useState("")
+  const [rating, setRating] = useState(0)
+  const [fullName, setFullName] = useState("")
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const { mutate } = postReview();
+  const { mutate } = postReview()
 
   useEffect(() => {
     if (cardId !== undefined) {
-      refetch();
+      refetch()
     }
-  }, [cardId, refetch]);
+  }, [cardId, refetch])
 
   const imgHandler = (e) => {
-    imgRef.current.src = e.target.src;
-  };
+    imgRef.current.src = e.target.src
+  }
 
-  const { cart, updateCart } = useStore();
+  const { cart, updateCart } = useStore()
   const quantityHandler = (card) => {
-    toggleFn("cart", card, updateCart);
-  };
+    toggleFn("cart", card, updateCart)
+  }
 
   const resetForm = () => {
-    setComment("");
-    setRating(0);
-    setFullName("");
-  };
+    setComment("")
+    setRating(0)
+    setFullName("")
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     mutate(
       {
         product: cardId,
@@ -59,19 +54,19 @@ const Detail = () => {
       },
       {
         onSuccess: () => {
-          resetForm();
-          setIsModalOpen(false);
+          resetForm()
+          setIsModalOpen(false)
         },
         onError: (error) => {
-          console.log(error);
+          console.log(error)
         },
       }
-    );
-  };
+    )
+  }
 
   const modalOverlayStyle = {
     opacity: isModalOpen ? 1 : 0,
-    pointerEvents: isModalOpen ? "auto" : "none", 
+    pointerEvents: isModalOpen ? "auto" : "none",
     position: "fixed",
     top: 0,
     left: 0,
@@ -82,7 +77,7 @@ const Detail = () => {
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     transition: "opacity 0.3s ease",
-  };
+  }
 
   const modalStyle = {
     backgroundColor: "white",
@@ -95,7 +90,7 @@ const Detail = () => {
     transform: isModalOpen ? "scale(1)" : "scale(0.8)",
     opacity: isModalOpen ? 1 : 0,
     transition: "transform 0.3s ease, opacity 0.3s ease",
-  };
+  }
 
   const closeButtonStyle = {
     position: "absolute",
@@ -104,7 +99,7 @@ const Detail = () => {
     color: "gray",
     cursor: "pointer",
     fontSize: "1.5rem",
-  };
+  }
 
   return (
     <div className="px-4">
@@ -126,10 +121,7 @@ const Detail = () => {
             <div className="flex gap-1 overflow-x-auto">
               {/* Thumbnails for other images */}
               {data?.images?.map((img, index) => (
-                <button
-                  className="border-2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 p-2 rounded-md overflow-hidden focus:border-blue-500"
-                  key={index}
-                >
+                <button className="border-2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 p-2 rounded-md overflow-hidden focus:border-blue-500" key={index}>
                   <img
                     className="cursor-pointer w-full h-full object-cover object-center"
                     onClick={imgHandler}
@@ -143,73 +135,41 @@ const Detail = () => {
 
           {/* Product Details */}
           <div className="flex flex-col gap-3 col-span-1 md:col-span-1 lg:col-span-3 rounded-md">
-            <div className="text-black hover:text-blue-500 transition-all text-base sm:text-lg font-semibold cursor-pointer">
-              {data?.name}
-            </div>
+            <div className="text-black hover:text-blue-500 transition-all text-base sm:text-lg font-semibold cursor-pointer">{data?.name}</div>
             <div>
               <p className="text-gray-400 text-sm block">
                 Price:
                 <span className="text-blue-500 text-base sm:text-lg font-semibold ml-3">
-                  {data?.price === null
-                    ? "Kelishuv asosida"
-                    : (+data?.price).toFixed(2)} {/* Format price */}
+                  {data?.price === null ? "Kelishuv asosida" : (+data?.price).toFixed(2)} {/* Format price */}
                   <span className="pl-2">{data?.currency}</span>
                 </span>
               </p>
               <p className="text-black text-sm block">
-                <span className="text-gray-400">Quantity in stock:</span>{" "}
-                {data?.stock_quantity}
+                <span className="text-gray-400">Quantity in stock:</span> {data?.stock_quantity}
               </p>
             </div>
-            <button
-              onClick={() => quantityHandler(data)}
-              id="cart"
-              className="bg w-max px-5 flex-row gap-2 flex items-center justify-center text-white rounded-md p-2"
-            >
+            <button onClick={() => quantityHandler(data)} id="cart" className="bg w-max px-5 flex-row gap-2 flex items-center justify-center text-white rounded-md p-2">
               <HiOutlineShoppingCart className="w-4 sm:w-6 h-4 hidden sm:block sm:h-6" />
               <span className="text-sm sm:text-base">Purchase</span>
             </button>
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="bg w-max px-5 flex-row gap-2 flex items-center justify-center text-white rounded-md p-2"
-            >
+            <button onClick={() => setIsModalOpen(true)} className="bg w-max px-5 flex-row gap-2 flex items-center justify-center text-white rounded-md p-2">
               <FaCommentDots className="w-4 sm:w-6 h-4 hidden sm:block sm:h-6" />
               Post a review
             </button>
+            <div className="mt-5">{data?.description}</div>
           </div>
 
           {/* Modal for Reviews */}
           <div style={modalOverlayStyle} onClick={() => setIsModalOpen(false)}>
             <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                style={closeButtonStyle}
-              >
+              <button onClick={() => setIsModalOpen(false)} style={closeButtonStyle}>
                 &times;
               </button>
               <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  placeholder="Full Name"
-                  className="w-full p-2 border border-gray-300 rounded mb-4 focus:outline-none focus:border-blue-500"
-                />
-                <StarRating
-                  className="mt-2"
-                  rating={rating}
-                  onRatingChange={setRating}
-                />
-                <textarea
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  placeholder="Type your review..."
-                  className="w-full mt-3 p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-                />
-                <button
-                  type="submit"
-                  className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                >
+                <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Full Name" className="w-full p-2 border border-gray-300 rounded mb-4 focus:outline-none focus:border-blue-500" />
+                <StarRating className="mt-2" rating={rating} onRatingChange={setRating} />
+                <textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Type your review..." className="w-full mt-3 p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500" />
+                <button type="submit" className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
                   Submit
                 </button>
               </form>
@@ -225,17 +185,10 @@ const Detail = () => {
               <p>There are no reviews yet.</p>
             ) : (
               reviews.map((review, index) => (
-                <div
-                  key={index}
-                  className="p-4 bg-white shadow-sm rounded-md mb-4 border border-gray-300"
-                >
+                <div key={index} className="p-4 bg-white shadow-sm rounded-md mb-4 border border-gray-300">
                   <div className="flex items-center mb-2">
-                    <div className="font-bold text-gray-800">
-                      {review.full_name}
-                    </div>
-                    <div className="ml-2 text-sm text-gray-500">
-                      {new Date(review.created_at).toLocaleDateString()}
-                    </div>
+                    <div className="font-bold text-gray-800">{review.full_name}</div>
+                    <div className="ml-2 text-sm text-gray-500">{new Date(review.created_at).toLocaleDateString()}</div>
                   </div>
                   <StarRating rating={review.rating} readonly />
                   <p className="text-gray-700 mt-2">{review.comment}</p>
@@ -248,7 +201,7 @@ const Detail = () => {
         <p>Unexpected error occurred when loading details</p>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Detail;
+export default Detail
